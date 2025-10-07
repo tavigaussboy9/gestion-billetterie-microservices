@@ -4,14 +4,14 @@ const port = 3004;
 
 app.use(express.json());
 
-// Route pour envoyer une notification
+// Route to send a notification
 app.post('/notify', (req, res) => {
     const { message, userId } = req.body;
-    // Logique pour envoyer une notification
-    console.log(`Notification envoyée à l'utilisateur ${userId}: ${message}`);
-    res.status(200).send({ message: 'Notification envoyée avec succès' });
+    // Logic to send a notification
+    console.log(`Notification sent to user ${userId}: ${message}`);
+    res.status(200).send({ message: 'Notification sent successfully' });
 });
 
 app.listen(port, () => {
-    console.log(`Service de notification en écoute sur le port ${port}`);
+    console.log(`Notification service listening on port ${port}`);
 });

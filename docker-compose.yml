@@ -6,21 +6,26 @@ services:
       - '3001:3001'
     depends_on:
       - mongo
+    restart: always
   ticket-service:
     build: ./ticket_service
     ports:
       - '3002:3002'
     depends_on:
       - mongo
+    restart: always
   payment-service:
     build: ./payment_service
     ports:
       - '3003:3003'
+    restart: always
   notification-service:
     build: ./notification_service
     ports:
       - '3004:3004'
+    restart: always
   mongo:
     image: mongo:6.0
     ports:
       - '27017:27017'
+    restart: always

@@ -8,8 +8,12 @@ app.use(express.json());
 app.post('/notify', (req, res) => {
     const { message, userId } = req.body;
     // Input validation
-    if (!message || !userId) {
-        return res.status(400).send({ message: 'Invalid input', status: 'error' });
+    if (!message && !userId) {
+        return res.status(400).send({ message: 'Message and User ID are required', status: 'error' });
+    } else if (!message) {
+        return res.status(400).send({ message: 'Message is required', status: 'error' });
+    } else if (!userId) {
+        return res.status(400).send({ message: 'User ID is required', status: 'error' });
     }
     // Logic to send a notification
     console.log(`Notification sent to user ${userId}: ${message}`);

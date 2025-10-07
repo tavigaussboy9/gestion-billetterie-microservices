@@ -9,7 +9,7 @@ app.post('/notify', (req, res) => {
     const { message, userId } = req.body;
     // Logic to send a notification
     console.log(`Notification sent to user ${userId}: ${message}`);
-    res.status(200).send({ message: 'Notification sent successfully' });
+    res.status(200).send({ message: 'Notification sent successfully', status: 'success' });
 });
 
 app.listen(port, () => {

@@ -7,7 +7,8 @@ const port = 3002;
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/ticket-service', { useNewUrlParser: true, useUnifiedTopology: true });
+const dbName = process.env.DB_NAME || 'ticket-service';
+mongoose.connect(`mongodb://localhost:27017/${dbName}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Ticket Model
 const Ticket = mongoose.model('Ticket', new mongoose.Schema({

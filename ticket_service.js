@@ -6,22 +6,22 @@ const port = 3002;
 
 app.use(express.json());
 
-// Connectez-vous à MongoDB
-mongoose.connect('mongodb://localhost/ticket-service', { useNewUrlParser: true, useUnifiedTopology: true });
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/ticket-service', { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Modèle de Billet
+// Ticket Model
 const Ticket = mongoose.model('Ticket', new mongoose.Schema({
     eventId: String,
     userId: String,
     status: { type: String, enum: ['reserved', 'purchased'], default: 'reserved' }
 }));
 
-// Route pour acheter un billet
+// Route to purchase a ticket
 app.post('/tickets', (req, res) => {
     const ticket = new Ticket(req.body);
     ticket.save().then(() => res.status(201).send(ticket));
 });
 
 app.listen(port, () => {
-    console.log(`Service de billets en écoute sur le port ${port}`);
+    console.log(`Ticket service listening on port ${port}`);
 });

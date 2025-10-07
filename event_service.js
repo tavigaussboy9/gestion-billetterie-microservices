@@ -6,10 +6,10 @@ const port = 3001;
 
 app.use(express.json());
 
-// Connectez-vous à MongoDB
+// Connect to MongoDB
 mongoose.connect('mongodb://localhost/event-service', { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Modèle d'Événement
+// Event Model
 const Event = mongoose.model('Event', new mongoose.Schema({
     name: String,
     date: Date,
@@ -17,12 +17,12 @@ const Event = mongoose.model('Event', new mongoose.Schema({
     description: String
 }));
 
-// Route pour créer un événement
+// Route to create an event
 app.post('/events', (req, res) => {
     const event = new Event(req.body);
     event.save().then(() => res.status(201).send(event));
 });
 
 app.listen(port, () => {
-    console.log(`Service d'événements en écoute sur le port ${port}`);
+    console.log(`Event service listening on port ${port}`);
 });

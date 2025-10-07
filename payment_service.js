@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.post('/payment', (req, res) => {
     const { amount, ticketId } = req.body;
     // Logique de traitement du paiement ici
-    res.status(200).send({ message: 'Paiement traité avec succès', ticketId });
+    res.status(200).send({ message: 'Payment processed successfully', ticketId });
 });
 
 app.listen(port, () => {

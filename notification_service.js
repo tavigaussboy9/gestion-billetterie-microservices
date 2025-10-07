@@ -12,8 +12,8 @@ app.post('/notify', (req, res) => {
         return res.status(400).send({ message: 'Message and User ID are required', status: 'error' });
     } else if (!message) {
         return res.status(400).send({ message: 'Message is required', status: 'error' });
-    } else if (!userId) {
-        return res.status(400).send({ message: 'User ID is required', status: 'error' });
+    } else if (!userId || typeof userId !== 'string' || userId.trim() === '') {
+        return res.status(400).send({ message: 'User ID is required and must be a non-empty string', status: 'error' });
     }
     // Logic to send a notification
     console.log(`Notification sent to user ${userId}: ${message}`);

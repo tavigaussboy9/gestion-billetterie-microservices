@@ -6,13 +6,13 @@ const port = 3003;
 
 app.use(bodyParser.json());
 
-// Route pour traiter le paiement
+// Route for processing payment
 app.post('/payment', (req, res) => {
     const { amount, ticketId } = req.body;
-    // Logique de traitement du paiement ici
+    // Payment processing logic here
     res.status(200).send({ message: 'Payment processed successfully', ticketId });
 });
 
 app.listen(port, () => {
-    console.log(`Service de paiement en écoute sur le port ${port}`);
+    console.log(`Payment service listening on port ${port}`);
 });
